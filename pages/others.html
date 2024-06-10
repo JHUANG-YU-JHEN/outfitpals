@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>about</title>
+    <!-- customer -->
+    <link rel="shortcut icon" href="../assets/images/outfitpals_logo.png" type="image/x-icon">
+    <meta name="description" content="outfitpals wear design fashion popular">
+    <meta name="keywords" content="outfitpals,wear,design,fashion,popular">
+    <meta property="og:title" content="Outfit Pals">
+    <meta property="og:description" content="Outfit Pals 你的穿搭好朋友">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bftsai.github.io/outfitpals/">
+    <meta property="og:image" content="https://i.imgur.com/K5mbbMp.jpg">
+    <link rel="apple-touch-icon" sizes="32x5" href="../assets/images/outfitpals_logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <style>
+    .btn-pill {
+        border-radius: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .table {
+    table-layout: fixed; 
+    }
+    
+    #current-day {
+        background-color: palegoldenrod;
+    }
+</style>
+  <body>
+    <%- include('./layout/header'); -%>
+    <br>
+    <div class="container my-6 ">
+        <div class="row other">
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container d-flex display-6 justify-content-center my-3" >
+        <div class="d-flex ms-5" style="position: relative; right: 40px;">
+            <a href="#" class="thumb-link "><p class="pe-5 thumb active">貼文總覽</p></a>
+            <a href="#" class="thumb-link" id="nologin"><p class="ps-5 thumb">預約資訊</p></a>  
+        </div>
+    </div>
+    <hr>
+    <div id="othersmain">
+        <div class="container otherspost" >
+
+        </div> 
+    </div>
+  
+
+    <div id="reserve" class="d-none">
+        <div class="container">
+            <div class="row align-items-center" style="height: 600px;">
+                <div class="col-6 ">
+                    <div class="d-flex justify-content-center">
+                        <strong class="fs-2">選擇預約時段</strong>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mb-5">
+                        <p><i class="bi bi-calendar-x-fill text-danger"></i></i>已被預約</p>
+                        <p><i class="bi bi-calendar2-check-fill text-info"></i>可預約時段</p>
+                        <p><i class="bi bi-calendar-plus-fill text-warning"></i>您已選取</p>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center my-5">
+                        <i class="bi bi-caret-left-fill fs-2" id="left"></i>
+                        <strong class="fs-2"  id="months"></strong>
+                        <i class="bi bi-caret-right-fill fs-2" id="right"></i>
+                    </div>
+    
+                    <div class="d-flex justify-content-center mt-5 table-responsive-xxl table-responsive">
+                        <table class="table table-bordered border-primary border-5 align-middle " id="dataTable">
+                            <thead>
+                              <tr>
+
+                                <th scope="col">Mon</th>
+                                <th scope="col">Tue</th>
+                                <th scope="col">Wed</th>
+                                <th scope="col">Thu</th>
+                                <th scope="col">Fri</th>
+                                <th scope="col">Sat</th>
+                                <th scope="col">Sun</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+
+                                <td data-row="1" data-col="1"></td>
+                                <td data-row="1" data-col="2"></td>
+                                <td data-row="1" data-col="3"></td>
+                                <td data-row="1" data-col="4"></td>
+                                <td data-row="1" data-col="5"></td>
+                                <td data-row="1" data-col="6"></td>
+                                <td data-row="1" data-col="7"></td>
+                              </tr>
+                              <tr>
+
+                                <td data-row="2" data-col="1"></td>
+                                <td data-row="2" data-col="2"></td>
+                                <td data-row="2" data-col="3"></td>
+                                <td data-row="2" data-col="4"></td>
+                                <td data-row="2" data-col="5"></td>
+                                <td data-row="2" data-col="6"></td>
+                                <td data-row="2" data-col="7"></td>
+                              </tr>
+                              <tr>
+                                <td data-row="3" data-col="1"></td>
+                                <td data-row="3" data-col="2"></td>
+                                <td data-row="3" data-col="3"></td>
+                                <td data-row="3" data-col="4"></td>
+                                <td data-row="3" data-col="5"></td>
+                                <td data-row="3" data-col="6"></td>
+                                <td data-row="3" data-col="7"></td>
+                              </tr>
+                              <tr>
+                                <td data-row="4" data-col="1"></td>
+                                <td data-row="4" data-col="2"></td>
+                                <td data-row="4" data-col="3"></td>
+                                <td data-row="4" data-col="4"></td>
+                                <td data-row="4" data-col="5"></td>
+                                <td data-row="4" data-col="6"></td>
+                                <td data-row="4" data-col="7"></td>
+                              </tr>
+                              <tr>
+                                <td data-row="5" data-col="1"></td>
+                                <td data-row="5" data-col="2"></td>
+                                <td data-row="5" data-col="3"></td>
+                                <td data-row="5" data-col="4"></td>
+                                <td data-row="5" data-col="5"></td>
+                                <td data-row="5" data-col="6"></td>
+                                <td data-row="5" data-col="7"></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <strong class="text-danger">!如果要重新選擇日期請刷新頁面!</strong>
+                        <p class="text-warning">!單次預約僅可選擇單一日期!</p>
+                    </div>
+    
+                </div>
+                
+                <div class="col-6 mt-5">
+                    <br><br>
+                    <div class="d-flex justify-content-center">
+                        <strong class="fs-2">活動地點</strong>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p>請勾選下下方您可前往的地點</p>
+                    </div>
+                    <br><br>
+                    <div class="me-5"> 
+                        <div class="d-flex justify-content-center  ">
+                            <div class="form-check">
+                                <input class="checkbox" type="checkbox" value="" id="flexCheckDefault1">
+                                <label class="form-check-label d1" for="flexCheckDefault1">
+                                  Default checkbox1
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center ">
+                            <div class="form-check">
+                                <input class="checkbox" type="checkbox" value="" id="flexCheckDefault2">
+                                <label class="form-check-label d2" for="flexCheckDefault2">
+                                  Default checkbox2
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center ">
+                            <div class="form-check">
+                                <input class="checkbox" type="checkbox" value="" id="flexCheckDefault3">
+                                <label class="form-check-label d3" for="flexCheckDefault3">
+                                  Default checkbox3
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center ">
+                            <div class="form-check">
+                                <input class="checkbox" type="checkbox" value="" id="flexCheckDefault4">
+                                <label class="form-check-label d4" for="flexCheckDefault4">
+                                  Default checkbox4
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    
+                    <div class="d-flex justify-content-center">
+                        <strong class="fs-2">時間</strong>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p>請填寫您可前往的時間區間(必填)</p>
+                    </div>
+                    <div class="d-flex justify-content-center ">
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control  border-0 shadow-none oc1" placeholder="14"  style="width: 50px;" required>:
+                            <input type="text" class="form-control  border-0 shadow-none mu1" placeholder="00"  style="width: 50px;">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <strong class="text-warning">對方方便時間</strong>
+                        <div class="usetime"><p>18:00-19:00</p></div>
+                    </div>
+
+                    <br><br>
+                    <div class="d-flex justify-content-center my-5">
+                        <button type="submit" class="btn btn-primary ctn"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">繼續填寫需求</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+        <br><br><br><br>
+    </div>
+    
+    <div class="container  d-none" id="unopen">
+        <br><br><br><br>
+        <div class="custom-container d-flex justify-content-center align-items-center ">
+            <div>
+                <h1 class="display-3 mb-5" style="opacity: 0.4;">未開放預約申請</h1>
+                <br>
+                <p class="d-flex justify-content-center mt-5 unopenname"></p>
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary  my-6 bkdep">繼續瀏覽其他人的穿搭</button>
+                </div>
+            </div>
+        </div>     
+        <br><br><br><br>   
+    </div>
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">本次的逛街需求</h5>
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+                <div class="container justify-content-center">
+                          <label for="exampleFormControlTextarea1" class="card-title form-label display-6 d-flex justify-content-center fw-bold">請填寫您本次的逛街需求</label>
+                          <textarea class="form-control my-6 text" id="exampleFormControlTextarea1" rows="3" placeholder="必須填寫" style="opacity: 0.4;"></textarea>
+                          <strong class="d-flex justify-content-center display-6">請確認您的預約申請</strong>
+                          <p class="mt-6" style="position: relative; left: 100px;">我可以在</p>
+                          <ul class="mb-6 tim" style="position: relative; left: 100px;">
+                            
+                          </ul>
+                          <p class="mt-6" style="position: relative; left: 100px;">前往</p>
+                          <ul class="mb-6 pos" style="position: relative; left: 100px;">
+
+                          </ul>
+                          <p class="fs-6 my-6 d-flex justify-content-center" style="opacity: 0.4;">詳細的會面時間與地點將由小精靈決定後通知您</p>   
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <div>
+                    <input class="form-check-input me-2 doublecheck" type="checkbox" value="" id="flexCheckDefault" disabled>
+                    <label class="form-check-label " for="flexCheckDefault" >
+                        以上資訊確認無誤
+                    </label>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#staticBackdrops" id="go" disabled>送出</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrops" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">恭喜您已送出預約申請！</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container  justify-content-center">
+                          <br>
+                          <strong class="d-flex justify-content-center display-6 fw-bold">請至「我的預約」確認您的預約狀態</strong>
+                          <p class="fs-6 my-6 d-flex justify-content-center" style="opacity: 0.4;">請留意逛街精靈向您提供的會面時間與地點，並準時前往，謝謝。</p>
+            
+                          <div class="d-flex justify-content-center align-items-center my-3">
+                            <p>以下為您向</p>          
+                            <div class="d-flex userinfomation">
+
+                            </div>                         
+                            <p>送出的預約資訊</p>
+                          </div>
+            
+                          <div class="d-flex justify-content-center ans" >
+                            
+                          </div>
+            
+                          <p class="mt-6" style="position: relative; left: 100px;">我可以在</p>
+                          <ul class="mb-6 tim2" style="position: relative; left: 100px;">
+                            
+                          </ul>
+                          <p class="mt-6" style="position: relative; left: 100px;">前往</p>
+                          <ul class="mb-6 ans3" style="position: relative; left: 100px;">
+
+                          </ul>    
+                </div>
+            </div>
+            <div class="modal-footer">
+            <a href="reserve.html" type="button" class="btn btn-primary">知道了</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Modal HTML -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body">
+            <!-- Modal 內容 -->
+            <p class="fs-4">你沒有註冊</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">好吧</button>
+            <button type="button" class="btn btn-primary" id="gologin">去註冊</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModa2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body">
+            <!-- Modal 內容 -->
+            <p class="fs-4">這個人還沒有建檔</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">好吧</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <%- include('./layout/footer'); -%>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../assets/js/others.js"></script>
+  </body>
+
+</html>

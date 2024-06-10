@@ -1,0 +1,17 @@
+.c-confirm-btn-group{
+    .btn:active{
+        border-color: $primary !important;
+        background-color: $primary;
+        color: $white !important;
+    }
+}
+@include lg{
+    .c-confirm-btn-group{
+        .btn:hover{
+            transition: all 0.4s ease;
+            border-color: $primary !important;
+            background-color: $primary;
+            color: $white !important;
+        }
+    }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>information</title>
+    <!-- customer -->
+    <link rel="shortcut icon" href="../assets/images/outfitpals_logo.png" type="image/x-icon">
+    <meta name="description" content="outfitpals wear design fashion popular">
+    <meta name="keywords" content="outfitpals,wear,design,fashion,popular">
+    <meta property="og:title" content="Outfit Pals">
+    <meta property="og:description" content="Outfit Pals 你的穿搭好朋友">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bftsai.github.io/outfitpals/">
+    <meta property="og:image" content="https://i.imgur.com/K5mbbMp.jpg">
+    <link rel="apple-touch-icon" sizes="32x5" href="../assets/images/outfitpals_logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+            
+    </style>
+</head>
+
+<body class="body">
+    <%- include('./layout/header'); -%>
+
+
+        <div class="container mb-4 test">
+            <div class="ms-5">
+                <div class="row text-center mt-2">
+                    <div class="col-3 d-flex ">
+                        <div class="circle-box p-5">
+                            <!-- <img class="" src="/assets/images/reserve/male-1.svg" alt=""> -->
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class=" ms-1">
+                                <strong class="fs-5 fs-lg-2 posterNickName"></strong>
+                                <p class="posterIntroduce fs-5 fs-lg-6 d-inline-block text-truncate" style="max-width: 250px;"></p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex align-items-center">
+                        <div>
+                            <p class="fs-5 fs-lg-2 text-nowrap">本次穿搭風格</p>
+                            <button type="button" class="outfitStyle btn btn-primary btn-pill"></button>
+                        </div>
+
+                    </div>
+                    <div class="col-3 d-flex align-items-center">
+                        <div class="sty">
+                            <p class=" fs-5 fs-lg-2 text-nowrap"></p>
+                            <button type="button" class=" btn btn-primary btn-pill"></button>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex align-items-center">
+                        <button type="button" class="btn btn-primary fs-3 fs-lg-5 reserve">我要預約</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="container my-6">
+            <div class="me-5 pe-5">
+                <div class="d-flex justify-content-center">
+                    <div class="card " style="width: 500px; height: 680px;">
+                        <div class="postImg">
+                            <img src="" style="width: 500px; height: 440px;" class=" object-fit-cover">
+                        </div>
+                        <div class="card-body ">
+                            <h5 class="postTitle fs-7 fs-lg-4 fw-bold"></h5>
+                            <p class="postContent fs-9 fs-lg-8 mb-2 mb-lg-7 fw-normal"></p>
+                            <div class="posts__slide__caption__text__info d-flex mb-lg-7 justify-content-between">
+                                <div class="posterInfo posts__slide__caption__text__info__user d-flex mb-2">
+                                    <p class="posts__user__height ps-3 fs-9 fs-lg-7"></p>
+                                </div>
+                                <div class="posts__slide__caption__text__info__btn d-flex">
+                                    <p class="likecount"></p>
+                                    <div class="me-7"><span class="like material-symbols-outlined">favorite</span></div>
+                                    <p  class="collectcount"></p>
+                                    <div><span class="favorite material-symbols-outlined">bookmark</span></div>
+                                </div>
+                            </div>
+                            <!-- <div class="posts__text__tag fs-8 fs-lg-7"># 日系穿搭</div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="posterOther container mt-5">
+            <h2 class="text-center ">查看Selen的其他搭配</h2>
+        </div>
+
+        <div class="more ">
+
+        </div>
+
+
+        <div class="modal fade" id="myModa2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+    
+                </div>
+                <div class="modal-body">
+                <!-- Modal 內容 -->
+                <p class="fs-4">請登先登入</p>
+                </div>
+                <div class="modal-footer">
+                <a href="member.html" type="button" class="btn btn-secondary">好吧</a>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="container  mb-5">
+            <div class="posterMore d-flex justify-content-center">
+                <button type="button" class=" btn btn-primary fs-3 arrowBtn2">看更多Selen的穿搭</button>
+            </div>
+        </div>
+
+        <%- include('./layout/footer'); -%>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script type="module" src="../main.js"></script>
+        <script type="module" src="../assets/js/information.js"></script>
+</body>
+
+</html>

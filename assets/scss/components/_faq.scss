@@ -1,0 +1,139 @@
+.FAQ {
+    .container{
+
+        background-image: url(/assets/images/index/bg_faq.jpg);
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: auto; 
+        background-color: rgba(255, 255, 255, 0.2);
+        background-blend-mode: color-burn;
+        padding: 64px 12px;
+    }
+
+    h2,
+    h3 {
+        line-height: 120%;
+        letter-spacing: 0.32px;
+    }
+
+    &__content {
+        background-color: $white;
+        padding: 16px;
+        gap: 16px;
+
+        &__items {
+
+            &__question {
+                align-items: center;
+                line-height: 120%;
+                letter-spacing: 0.32px;
+                border-bottom: 1px dashed $greyD4;
+                color: $black;
+
+                span {
+                    transition: 0.4s ease;
+                }
+
+                .FAQarrowOpen {
+                    transform: rotate(-90deg);
+                    color: $secondary;
+                    transition: 0.5s ease-in-out;
+                }
+            }
+
+            &__answer {
+                display: flex;
+                background-color: $tertiary;
+                gap: 8px;
+                line-height: 180%;
+                letter-spacing: 0.28px;
+                text-align: justify;
+                max-height: 0;
+                overflow: hidden;
+                transition: 0.5s ease-in-out;
+            }
+
+            .FAQopen {
+                margin-top: 16px;
+                animation: slidein 0.5s ease-in-out forwards;
+            }
+
+            .FAQclose {
+                animation: slideout 0.5s ease-in-out forwards;
+
+            }
+
+            @keyframes slidein {
+                from {
+                    height: 0px;
+                }
+                to {
+                    max-height: 130px;
+                }
+            }
+
+            @keyframes slideout {
+                from {
+                    max-height: 130px;
+                }
+                to {
+                    height: 0px;
+                }
+            }
+        }
+    }
+
+}
+
+@include lg {
+    .FAQ {
+        background-position: right ;
+        background-size: auto ;
+        padding: 80px 72px;
+
+        &__content {
+            width: 60%;
+
+            &__items {
+
+                &__question {
+                    letter-spacing: 0.36px;
+                }
+
+                &__answer {
+                    gap: 16px;
+                    letter-spacing: 0.32px;
+                    padding: 0;
+                }
+
+                .FAQopen {
+                    margin-top: 16px;
+                    animation: slidein 0.5s ease-in-out forwards;
+                }
+
+                .FAQclose {
+                    animation: slideout 0.5s ease-in-out forwards;
+
+                }
+
+                @keyframes slidein {
+                    from {
+                        height: 0px;
+                    }
+                    to {
+                        max-height: 128px;
+                    }
+                }
+
+                @keyframes slideout {
+                    from {
+                        max-height: 128px;
+                    }
+                    to {
+                        height: 0px;
+                    }
+                }
+            }
+        }
+    }
+}

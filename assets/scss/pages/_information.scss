@@ -1,0 +1,43 @@
+
+
+// .circle_box {
+//     width: 80px;  /* 設定容器的寬度 */
+//     height: 80px; /* 設定容器的高度 */
+//     overflow: hidden; /* 讓圖片超出容器部分隱藏 */
+//     border-radius: 50%; /* 將容器設定為圓形 */
+//     position: relative; /* 使得內容物相對於容器進行定位 */
+//     background-image: url('/assets/images/reserve/male-1.svg');
+//     img {
+//         width: 100%; /* 讓圖片的寬度充滿整個容器 */
+//         height: auto; /* 保持圖片的寬高比例，自適應高度 */
+//         display: block; /* 去除預設的底部間距 */
+//         position: absolute; /* 讓圖片相對於容器進行絕對定位 */
+//         top: 50%; /* 將圖片上緣與容器中心對齊 */
+//         left: 50%; /* 將圖片左緣與容器中心對齊 */
+//         transform: translate(-50%, -50%); /* 使用 transform 進行中心對齊 */
+//     }
+    
+//     @include lg {
+//         width: 100px !important;
+//         height: 100px !important;
+//     }
+// }
+// .circle-box{
+//     width: 50px;
+//     height: 50px;
+//     border-radius: 50%;
+//     background-position: center center;
+//     background-size: cover;
+//     padding: 10px;
+// }
+
+.body{
+    background-color:#F1E9E1;
+}
+
+.btn-pill {
+    border-radius: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+

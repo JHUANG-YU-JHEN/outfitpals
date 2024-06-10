@@ -1,0 +1,96 @@
+// body{
+//     overflow-x: hidden;
+//   }
+
+#donate_section{
+    height: 1000px;
+    margin-top: 50px;
+}
+  #donate_section .res-steps-container .res-steps {
+      width: 25%;
+      text-align: center;
+      float: left;
+      cursor: pointer
+  }
+  
+  #donate_section .res-steps-container .res-steps .res-step-bar {
+      -webkit-border-radius: 50% !important;
+      -moz-border-radius: 50% !important;
+      -ms-border-radius: 50% !important;
+      border-radius: 50% !important;
+      background: #0aa7e1;
+      display: inline-block;
+      height: 40px;
+      width: 40px;
+      margin-top: 10px;
+      text-align: center;
+      color: #fff;
+      padding-top: 7px;
+      font-size: 20px
+  }
+  
+  #donate_section .res-steps-container .res-steps .res-progress-title {
+      text-align: center;
+      font-size: 15px;
+      padding-top: 10px;
+      display: block
+  }
+  
+  #donate_section .res-steps-container .res-steps .res-progress-bar {
+      height: 5px;
+      background: #0aa7e1;
+      width: 50%;
+      margin: -22px 0 0 50%;
+      float: left
+  }
+  
+  #donate_section .res-steps-container .res-step-two .res-progress-bar, #donate_section .res-steps-container .res-step-three .res-progress-bar, #donate_section .res-steps-container .res-step-four .res-progress-bar {
+      width: 100%;
+      margin-left: 0%
+  }
+  
+  #donate_section .res-steps-container .res-step-four .res-progress-bar {
+      width: 50%;
+      margin-right: 50%
+  }
+  
+  #donate_section .res-step-form {
+      border: 1px solid #d2d2d2;
+      box-shadow: 0px 6px 4px -2px silver;
+      position: absolute
+  }
+  
+  #donate_section .res-step-form h3 {
+      margin: 10px 0;
+      color: #0aa7e1;
+      font-size: 18px
+  }
+  
+  #donate_section .res-step-form .form-horizontal label {
+      font-weight: normal
+  }
+  
+  #donate_section .res-form-two, #donate_section .res-form-three, #donate_section .res-form-four {
+      left: 150%
+  }
+  
+  #donate_section .active .res-step-bar {
+      background: #f19b20 !important
+  }
+  
+  #donate_section .active .res-progress-title {
+      color: #0aa7e1
+  }
+
+  .res-step-form{
+    .material-symbols-outlined{
+        color: #ff0000;
+        font-variation-settings:
+        'FILL' 1,
+    }
+  }
+
+  .required:after {
+    content: " *";
+    color: red;
+}

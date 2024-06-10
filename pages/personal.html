@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>about</title>
+    <!-- customer -->
+    <link rel="shortcut icon" href="../assets/images/outfitpals_logo.png" type="image/x-icon">
+    <meta name="description" content="outfitpals wear design fashion popular">
+    <meta name="keywords" content="outfitpals,wear,design,fashion,popular">
+    <meta property="og:title" content="Outfit Pals">
+    <meta property="og:description" content="Outfit Pals 你的穿搭好朋友">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bftsai.github.io/outfitpals/">
+    <meta property="og:image" content="https://i.imgur.com/K5mbbMp.jpg">
+    <link rel="apple-touch-icon" sizes="32x5" href="../assets/images/outfitpals_logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+    <style>
+        .btn-pill {
+            border-radius: 50px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .table {
+        table-layout: fixed; 
+        }
+        .input-with-icon {
+             position: relative;
+        }
+
+        .input-with-icon input {
+            padding-left: 30px; /* 為圖示留出空間 */
+        }
+
+        .input-with-icon .icon-inside {
+            position: absolute;
+            left: 10px; /* 調整圖示位置 */
+            top: 50%; /* 垂直置中 */
+            transform: translateY(-50%);
+        }
+
+        #current-day {
+            background-color: palegoldenrod;
+        }
+
+        .input-with-icon input::placeholder {
+            text-align: center;
+        }
+    </style>
+  <body>
+    <%- include('./layout/header'); -%>
+    
+    
+        <div class="container my-6 " id="personalnav">
+            <br>
+            <div class="row personal" >
+        
+
+            </div>
+            <br>
+            <br>
+        </div>
+
+        <div id="personalselect">
+            <div class="container d-flex display-6 justify-content-center my-3" >
+                <div class="d-flex ms-5" style="position: relative; right: 40px;">
+                    <a href="#" class="thumb-link"><p class="pe-5 thumb active" >貼文總覽</p></a>
+                    <a href="#" class="thumb-link"><p class="ps-5 thumb" >預約資訊</p></a>  
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        
+        <div id="personalmain">
+            <div class="container otherspost" >
+    
+            </div> 
+        </div>
+
+        <div id="reserve" class="d-none">
+            <div class="container " >
+                <div class="row  align-items-center" style="height: 600px;">
+                    <div class="col-6 ">
+                        <div class="d-flex justify-content-center">
+                            <strong class="fs-2">設定預約時段</strong>
+                        </div>
+                        
+                        <div class="d-flex justify-content-around mb-5">
+                            <p><i class="bi bi-calendar-x-fill text-danger"></i></i>用戶已預約</p>
+                            <p><i class="bi bi-calendar2-check-fill text-info"></i>可預約時段</p>
+                        </div>
+                        
+                        <div class="d-flex justify-content-center my-5">
+                            <i class="bi bi-caret-left-fill fs-2" id="left"></i>
+                            <strong class="fs-2"  id="months"></strong>
+                            <i class="bi bi-caret-right-fill fs-2" id="right" ></i>
+                        </div>
+        
+                        <div class="d-flex justify-content-center mt-5 table-responsive-xxl table-responsive">
+                            <table class="table table-bordered border-primary border-5 align-middle ">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Mon</th>
+                                    <th scope="col">Tue</th>
+                                    <th scope="col">Wed</th>
+                                    <th scope="col">Thu</th>
+                                    <th scope="col">Fri</th>
+                                    <th scope="col">Sat</th>
+                                    <th scope="col">Sun</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                      <td data-row="1" data-col="1"></td>
+                                      <td data-row="1" data-col="2"></td>
+                                      <td data-row="1" data-col="3"></td>
+                                      <td data-row="1" data-col="4"></td>
+                                      <td data-row="1" data-col="5"></td>
+                                      <td data-row="1" data-col="6"></td>
+                                      <td data-row="1" data-col="7"></td>
+                                    </tr>
+                                    <tr>
+                                      <td data-row="2" data-col="1"></td>
+                                      <td data-row="2" data-col="2"></td>
+                                      <td data-row="2" data-col="3"></td>
+                                      <td data-row="2" data-col="4"></td>
+                                      <td data-row="2" data-col="5"></td>
+                                      <td data-row="2" data-col="6"></td>
+                                      <td data-row="2" data-col="7"></td>
+                                    </tr>
+                                    <tr>
+                                      <td data-row="3" data-col="1"></td>
+                                      <td data-row="3" data-col="2"></td>
+                                      <td data-row="3" data-col="3"></td>
+                                      <td data-row="3" data-col="4"></td>
+                                      <td data-row="3" data-col="5"></td>
+                                      <td data-row="3" data-col="6"></td>
+                                      <td data-row="3" data-col="7"></td>
+                                    </tr>
+                                    <tr>
+                                      <td data-row="4" data-col="1"></td>
+                                      <td data-row="4" data-col="2"></td>
+                                      <td data-row="4" data-col="3"></td>
+                                      <td data-row="4" data-col="4"></td>
+                                      <td data-row="4" data-col="5"></td>
+                                      <td data-row="4" data-col="6"></td>
+                                      <td data-row="4" data-col="7"></td>
+                                    </tr>
+                                    <tr>
+                                      <td data-row="5" data-col="1"></td>
+                                      <td data-row="5" data-col="2"></td>
+                                      <td data-row="5" data-col="3"></td>
+                                      <td data-row="5" data-col="4"></td>
+                                      <td data-row="5" data-col="5"></td>
+                                      <td data-row="5" data-col="6"></td>
+                                      <td data-row="5" data-col="7"></td>
+                                    </tr>
+                                  </tbody>
+                              </table>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <strong class="text-danger">!如果要重新選擇日期請刷新頁面!</strong>
+                        </div>
+        
+                    </div>
+                    
+                    <div class="col-6">
+                        <br>
+                        <br>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <strong class="fs-2">活動地點</strong>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <p>請設定下下方您可前往的地點</p>
+                        </div>
+                        <br><br><br>
+                        <div class="me-5">
+                            <div class="d-flex justify-content-center  ms-5">
+                                <div class="form-check d-flex ">
+                                    <div class="input-with-icon ">
+                                        <input type="text" class="form-control  border-0 shadow-none p1" placeholder="請輸入地點"  style="width: 150px;">
+                                        <i class="bi bi-pencil-square icon-inside "></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center  ms-5">
+                                <div class="form-check d-flex">
+                                    <div class="input-with-icon">
+                                        <input type="text" class="form-control  border-0 shadow-none p2" placeholder="請輸入地點"  style="width: 150px;">
+                                        <i class="bi bi-pencil-square icon-inside "></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center  ms-5">
+                                <div class="form-check d-flex">
+                                    <div class="input-with-icon">
+                                        <input type="text" class="form-control  border-0 shadow-none p3" placeholder="請輸入地點"  style="width: 150px;">
+                                        <i class="bi bi-pencil-square icon-inside "></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center  ms-5">
+                                <div class="form-check d-flex">
+                                    <div class="input-with-icon">
+                                        <input type="text" class="form-control  border-0 shadow-none p4" placeholder="請輸入地點"  style="width: 150px;">
+                                        <i class="bi bi-pencil-square icon-inside "></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="d-flex justify-content-center">
+                            <strong class="fs-2">時間</strong>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <p>請填寫您可被預約的時間區間</p>
+                        </div>
+                        <div class="d-flex justify-content-center ">
+                            <div class="d-flex align-items-center">
+                                <input type="text" class="form-control  border-0 shadow-none oc1 t1" placeholder="14"  style="width: 50px;" required>:
+                                <input type="text" class="form-control  border-0 shadow-none mu1 m1" placeholder="00"  style="width: 50px;">~
+                                <input type="text" class="form-control  border-0 shadow-none oc2 t2" placeholder="17"  style="width: 50px;">:
+                                <input type="text" class="form-control  border-0 shadow-none mu2 m2" placeholder="30"  style="width: 50px;">
+                            </div>
+                        </div>
+                        
+                        <br>
+                        <div class="d-flex justify-content-center my-5 ">
+                            <button type="submit" class="btn btn-primary setting" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >修改我的預約資訊</button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body fs-3">
+                                更改成功!!!
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" onclick="reloadPage()" >了解</button>
+                                </div>
+                            </div>
+                            </div>
+                            <script>
+                                function reloadPage() {
+                                    location.reload();      // 重整頁面
+                                }
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-5 me-5">
+                        <button type="button" class="btn btn-danger fs-5 close" id="reservebtn">關閉預約功能</button> 
+                        
+                    </div>
+                    
+                </div>
+                <br><br><br><br>
+            </div>
+        </div>
+        <br>
+
+
+        <div id="collect" class="d-none">
+
+        </div>
+
+        <div class="container d-none " id="noopen" >
+            <div class="custom-container d-flex justify-content-center align-items-center ">
+                <div>
+                    <br><br>
+                    <h1 class="display-3 mb-5" style="opacity: 0.4;">您尚未開放預約申請</h1>
+                    <br><br><br><br>
+                    <p class="d-flex justify-content-center mt-5">想成為小精靈提供陪逛服務嗎？
+                        立即填寫您的預約資訊！</p>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary my-6" id="open">開啟我的預約功能</button>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br><br>    
+        </div>
+
+        <div class="container d-none " id="nopost" >
+            <div class="custom-container d-flex justify-content-center align-items-center ">
+                <div>
+                    <br><br><br><br>
+                    <h1 class="display-3 mb-5 me-5" style="opacity: 0.4;">您尚未建立貼文</h1>
+                    <br><br><br><br>
+                </div>
+            </div>
+            <br><br><br><br><br>    
+        </div>
+        
+    
+
+    <%- include('./layout/footer'); -%>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../assets/js/personal.js"></script>
+  </body>
+</html>

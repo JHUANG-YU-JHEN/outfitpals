@@ -1,0 +1,71 @@
+// 需在html放入img，不知道如何實現更換箭頭圖檔
+.arrowBtn {
+    border: 0px;
+    transition: all 0.3s linear;
+    ;
+    background-color: $grey1D;
+    color: $primary;
+    padding: 24px 24px 24px 40px;
+
+    >img {
+        margin-left: 32px;
+    }
+
+    &:hover {
+        background-color: $primary !important;
+        color: $black !important;
+
+        // img {
+            //不確定如何改變箭頭顏色或更換圖檔
+
+        // }
+
+    }
+}
+
+// 使用background-image實現hover時箭頭更換
+// 因a標籤無法包含箭頭大小，經計算後padding-right增至100px
+// 箭頭位置與使用img的狀態仍有差異
+.arrowBtn2 {
+    border: 0px;
+    transition: all 0.3s linear;
+    ;
+    background-color: $grey1D;
+    color: $primary;
+    padding: 24px 100px 24px 40px;
+
+    background-image: url(/assets/images/components/Btn-Arrow-primary.svg);
+    background-repeat: no-repeat;
+    background-size: 44px 12px;
+    background-position: bottom 48% left 88%;
+
+    &:hover {
+        background-color: $primary !important;
+        color: $black !important;
+
+        background-image: url(/assets/images/components/Btn-Arrow-black.svg);
+
+    }
+}
+
+.arrowBtn2sm {
+    border: 0px;
+    transition: all 0.3s linear;
+    ;
+    background-color: $grey1D;
+    color: $primary;
+    padding: 16px 84px 16px 24px;
+
+    background-image: url(/assets/images/components/Btn-Arrow-primary.svg);
+    background-repeat: no-repeat;
+    background-size: 44px 12px;
+    background-position: bottom 48% left 88%;
+
+    &:hover {
+        background-color: $primary !important;
+        color: $black !important;
+
+        background-image: url(/assets/images/components/Btn-Arrow-black.svg);
+
+    }
+}

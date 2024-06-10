@@ -1,0 +1,47 @@
+
+.spinner-border.memberSpinner{
+    left: 49.5%;
+    top: 50%;
+}
+.member{
+    p{
+        word-break: break-all;
+    }
+    .gmailSignIn,.gmailSignUp,.memberIndexForm{
+        transition: all 0.4s ease;
+    }
+    .is-invalid-customer{
+        border-color: var(--bs-form-invalid-border-color) !important;
+        background: url('../images/member/invalid.png')no-repeat var(--bs-body-bg) !important;
+        background-position: right calc(0.375em + 0.1875rem) center !important;background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) !important;
+    }
+    .is-valid-customer{
+        border-color: var(--bs-form-valid-border-color) !important;
+        background: url('../images/member/valid.png') no-repeat var(--bs-body-bg) !important;
+        background-position: right calc(0.375em + 0.1875rem) center !important;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) !important;
+    }
+}
+.member-index{
+    transition: all 0.4s ease;
+}
+.member-signUpData,.member-signInData,.member-signInProfile,.member-signInData{
+    transition: all 0.4s ease;
+    .signUpImg:hover,.signInImg:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    .material-symbols-outlined{
+        color: #ff0000;
+        font-variation-settings:
+        'FILL' 1,
+    }
+    textarea{
+        resize: none;
+    }
+}
+@include lg{
+    // .member-index{
+    //     height: 71vh;
+    // }
+}

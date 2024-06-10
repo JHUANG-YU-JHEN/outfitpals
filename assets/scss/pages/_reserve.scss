@@ -1,0 +1,121 @@
+.reserve{
+    .unLogin{
+        .phoneSize{
+            background: url(../images/reserve/banner-375.png) 30% center no-repeat;
+            background-size: cover;
+            padding-top: 450px;
+            padding-bottom: 100px;
+        }
+        .c-confirm-btn-group{
+            margin: 0px;
+        }
+    }
+    .multiline-ellipsis { 
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+    .reserve-content{
+        transition: all 0.4s ease;
+        img{
+            width: 60px;
+            height: 60px;
+        }
+        li.active{
+            background-color: $greyE9;
+        }
+    }
+    .reserve-myDiscuss,.reserve-manageAppointments{
+        transition: all 0.4s ease;
+        img{
+            width: 80px;
+            height: 80px;
+        }
+        textarea{
+            resize: none;
+            vertical-align: middle;
+        }
+    }
+    .pagination{
+        transition: all 0.4s ease;
+    }
+}
+@include md{
+    .reserve{
+        .unLogin{
+            .phoneSize{
+                padding-top: 550px;
+                padding-bottom: 200px;
+            }
+        }
+        .reserve-content{
+            img{
+                width: 80px;
+                height: 80px;
+            }
+        }
+    }
+}
+@include lg{
+    .reserve{
+        .unLogin{
+            .banner1{
+                background: url(../images/reserve/banner-1.png) center center no-repeat;
+                background-size: 100%;
+                padding-top: 210px;
+                padding-bottom: 50px;
+            }
+            .banner2{
+                background: url(../images/reserve/banner-2.png) center center no-repeat;
+                background-size: 100%;
+                padding-top: 210px;
+                padding-bottom: 50px;
+            }
+            .c-confirm-btn-group{
+                margin-left: 130px;
+            }
+        }
+        .reserve-content{
+            img{
+                width: 80px;
+                height: 80px;
+            }
+            li.border:hover{
+                cursor: pointer;
+                background-color: $greyD4 !important;
+            }
+        }
+        .reserve-myDiscuss,.reserve-manageAppointments{
+            img{
+                width: 100px;
+                height: 100px;
+            }
+            input,label:hover{
+                cursor: pointer;
+            }
+        }
+        .material-symbols-outlined{
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
+@include xxl{
+    .reserve{
+        .unLogin{
+            .banner1{
+                padding-top: 400px;
+                padding-bottom: 95px;
+            }
+            .banner2{
+                padding-top: 400px;
+                padding-bottom: 95px;
+            }
+            .c-confirm-btn-group{
+                margin-left: 200px;
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+.c-switch-btn-group{
+    transition: all 0.4s ease;
+    .btn-group{
+        .active{
+            border-color: $primary !important;
+            background-color: $primary;
+            color: $white !important;
+        }
+        .btn:active{
+            border-color: $primary !important;
+            background-color: $primary;
+            color: $white !important;
+        }
+    }
+}
+@include lg{
+    .c-switch-btn-group{
+        .btn-group{
+            .btn:hover{
+                transition: all 0.4s ease;
+                border-color: $primary !important;
+                background-color: $primary;
+                color: $white !important;
+            }
+        }
+    }
+}

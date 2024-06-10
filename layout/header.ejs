@@ -1,0 +1,161 @@
+<header class="header p-3 py-lg-7 px-lg-18 fs-7 sticky-top z-2">
+    <nav class="container d-flex justify-content-between align-items-center">
+        <a href="index.html" class="header__logo">
+            <img src="/assets/images/logo_white.svg" alt="OutfitPals">
+        </a>
+        <!-- 搜尋Btn，僅貼文牆出現 -->
+        <div class="d-flex search d-none" id="toggle">
+            <span class="input-group-text border-0 header pe-3">
+                <span class="material-symbols-outlined">
+                    search
+                    </span>
+            </span>
+            <p class="mt-1">search</p>
+        </div>
+        <!-- 搜尋Btn結束 -->
+        <div class="header__links d-none d-lg-block">
+            <a href="" class="gopost">貼文牆</a>
+            <a href="./create.html" class="d-none loginShow">建立貼文</a>
+            <a href="./index.html#FAQ">常見問題</a>
+            <a href="./donate.html">贊助我們</a>
+            <!-- 登入前 -->
+            <a href="./member.html" class="header__links__button btn btn-outline-black18 m-0 ps-4 signupBtn">註冊登入 <span
+                    class="material-symbols-outlined">
+                    chevron_right
+                </span> </a>
+            <!-- 登入後新增 -->
+            <a href="./reserve.html" class="d-none loginShow">我的預約</a>
+            <a href="./member.html" class="m-0 d-none loginShow">會員中心</a>
+            <a href="" class="m-0 d-none loginShow avatar gopersonal"><img src="" alt=""></a>
+
+        </div>
+        <button type="button" class="header__menu-btn border-0 p-2 d-lg-none">
+            <span class="material-symbols-outlined">menu</span>
+            </div>
+    </nav>
+    <!-- 搜尋列表，以下僅在貼文牆顯示 -->
+    <div class="sidebar d-none">
+        <div class="row me-4 rows searchList d-none">
+            <div class="col-6 mt-6">
+                <div class="d-flex justify-content-center my-5">
+                    <div class="d-flex me-5">
+                        <span class="input-group-text border-0 header pe-3 w-50">
+                            <span class="material-symbols-outlined">
+                                search
+                                </span>
+                            <p class="ms-2 ">關鍵字搜尋</p>
+                        </span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center my-5">
+                    <input type="search" class="form-control header border-0 shadow-none" placeholder="請輸入您喜愛的風格"
+                        style="width: 200px;">
+                </div>
+                <br>
+                <div class="d-flex justify-content-center my-5">
+                    <button type="button" class="btn arrowBtn2sm btn-primary fs-lg-4 me-3">送出</button>
+                </div>
+            </div>
+            <div class="col-2 mt-6">
+                <div class="d-flex justify-content-center my-5">
+                    <strong>
+                        風格篩選
+                    </strong>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="style-japanese">
+                    <label class="form-check-label  text-nowrap" for="style-japanese">
+                        日系風格
+                    </label>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="style-street">
+                    <label class="form-check-label  text-nowrap" for="style-street">
+                        街頭風格
+                    </label>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="style-western">
+                    <label class="form-check-label  text-nowrap" for="style-western">
+                        歐美風格
+                    </label>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="style-korean">
+                    <label class="form-check-label  text-nowrap" for="style-korean">
+                        韓國風格
+                    </label>
+                </div>
+            </div>
+            <div class="col-2 mt-6">
+                <div class="d-flex justify-content-center my-5">
+                    <strong>
+                        身高篩選
+                    </strong>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="height-149">
+                    <label class="form-check-label  text-nowrap" for="height-149">
+                        149cm以下
+                    </label>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="height-150-159">
+                    <label class="form-check-label  text-nowrap" for="height-150-159">
+                        150-159cm
+                    </label>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="height-160-169">
+                    <label class="form-check-label  text-nowrap" for="height-160-169">
+                        160-169cm
+                    </label>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="height-170-179">
+                    <label class="form-check-label  text-nowrap" for="height-170-179">
+                        170-179cm
+                    </label>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="height-180">
+                    <label class="form-check-label  text-nowrap" for="height-180">
+                        180cm以上
+                    </label>
+                </div>
+            </div>
+            <div class="col-2 mt-6">
+                <div class="d-flex justify-content-center my-5">
+                    <strong>預約篩選</strong>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="reservation-open">
+                    <label class="form-check-label  text-nowrap" for="reservation-open">
+                        開放預約
+                    </label>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="reservation-closed">
+                    <label class="form-check-label  text-nowrap" for="reservation-closed">
+                        未開放
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- 貼文牆的gender switchBar -->
+<div class="switchBar container d-flex display-6 justify-content-center mt-3 d-none">         
+    <a href="#" class="thumb-link "><p class="pe-4 thumb">MEN</p></a>
+    <a href="#" class="thumb-link "><p class="ps-4 thumb">WOMEN</p></a>       
+</div>
+<hr class="switchBarHr d-none">
+
+<!-- 以上僅貼文牆顯示 -->
+
+<!-- 待桌機版完成後補行動版sidebar
+<div  class="header-sidebar">
+    <span class="material-symbols-outlined d-none"> close</span> 
+</div> -->
+
+<script type="module" src="/assets/js/header.js"></script>

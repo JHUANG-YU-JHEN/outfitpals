@@ -1,0 +1,43 @@
+{
+  "name": "web-layout-training-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite & json-server-auth db.json",
+    "json": "json-server-auth db.json",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vite build && gh-pages -d dist",
+    "start": "node server.js"
+  },
+"devDependencies": {
+    "ejs": "^3.1.9",
+    "git-cz": "^4.9.0",
+    "jquery": "^3.7.1",
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "vite": "^4.2.0",
+    "vite-plugin-ejs": "^1.6.4"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "bootstrap": "^5.3.2",
+    "commitizen": "^4.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "gh-pages": "^5.0.0",
+    "glob": "^10.2.2",
+    "google-auth-library": "^9.2.0",
+    "jquery": "^3.7.1",
+    "sass": "^1.61.0",
+    "sass-loader": "^13.2.2",
+    "vite-plugin-live-reload": "^3.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.footer {
+  color: $white;
+  align-self: stretch;
+
+  &__contact {
+    letter-spacing: 0.28px;
+
+    img {
+      display: block;
+      width: 156px;
+      max-height: 24px;
+    }
+
+    span {
+      display: block;
+      width: 21px;
+      height: 1px;
+      background-color: $white;
+    }
+  }
+
+  &__social {
+    > p {
+      font-weight: 500;
+    }
+  }
+
+  &__links__items {
+
+    >a {
+      color: $white;
+    }
+  }
+}
+
+@include lg {
+  .footer {
+    max-height: 178px ;
+    flex-direction: row;
+  }
+}

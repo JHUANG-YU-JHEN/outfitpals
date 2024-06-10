@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OutfitPals-Reserve</title>
+    <!-- customer -->
+    <link rel="shortcut icon" href="../assets/images/outfitpals_logo.png" type="image/x-icon">
+    <meta name="description" content="outfitpals wear design fashion popular">
+    <meta name="keywords" content="outfitpals,wear,design,fashion,popular">
+    <meta property="og:title" content="Outfit Pals">
+    <meta property="og:description" content="Outfit Pals 你的穿搭好朋友">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bftsai.github.io/outfitpals/">
+    <meta property="og:image" content="https://i.imgur.com/K5mbbMp.jpg">
+    <link rel="apple-touch-icon" sizes="32x5" href="../assets/images/outfitpals_logo.png">
+  </head>
+  <body>
+    <%- include('./layout/header'); -%>
+    <div class="spinner-border text-black18 d-none position-absolute memberSpinner" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="reserve h-radialGradienStyle-1 pb-9 pb-lg-13">
+      <div class="unLogin h-radialGradienStyle-1 py-9 py-md-24 py-xxl-23">
+        <div class="container">
+          <div class="phoneSize d-lg-none">
+            <h1 class="fw-medium fs-2 fs-lg-1 ms-3 mb-3">你還在為穿搭煩惱嗎？</h1>
+            <p class="fw-medium ms-3 mb-7">立即預約時尚穿搭教主，引領你走進潮流世界</p>
+            <div class="row justify-content-start z-2 c-confirm-btn-group">
+              <div class="col-6 col-sm-5 d-flex">
+                  <a href="member.html" class="btn btn-black18 fs-lg-5 text-primary py-lg-3 px-lg-7 flex-grow-1 memberMainPage" type="submit">立即登入/註冊</a>
+              </div>
+            </div>
+          </div>
+          <div id="reserveCarouselFade" class="carousel slide carousel-fade d-none d-lg-block" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="banner1">
+                  <h1 class="fw-medium fs-lg-1 ms-lg-17 mb-2 mb-lg-3">你還在為穿搭煩惱嗎？</h1>
+                  <p class="fw-medium fs-lg-2 ms-lg-17 mb-9 mb-lg-17">立即預約時尚穿搭教主，引領你走進潮流世界</p>
+                  <div class="row justify-content-start z-2 c-confirm-btn-group">
+                    <div class="col-6 col-sm-3 d-flex">
+                        <a href="member.html" class="btn btn-black18 fs-lg-5 text-primary py-lg-3 px-lg-7 flex-grow-1 memberMainPage" type="submit">立即登入/註冊</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="banner2">
+                  <h1 class="fw-medium fs-lg-1 ms-lg-17 mb-2 mb-lg-3">Wear Design Fashion Popular</h1>
+                  <p class="fw-medium fs-lg-2 ms-lg-17 mb-9 mb-lg-17">開始分享你的時尚穿搭</p>
+                  <div class="row justify-content-start z-2 c-confirm-btn-group">
+                    <div class="col-6 col-sm-3 d-flex">
+                        <a href="member.html" class="btn btn-black18 fs-lg-5 text-primary py-lg-3 px-lg-7 flex-grow-1 memberMainPage" type="submit">立即登入/註冊</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#reserveCarouselFade" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#reserveCarouselFade" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="container c-switch-btn-group">
+        <div class="row justify-content-center py-9 py-lg-13">
+          <div class="col col-lg-4">
+            <div class="reserveBtnSwitch btn-group w-100" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-black18 fs-lg-5 text-primary py-lg-3 px-lg-7 active">我的預約</button>
+              <button type="button" class="btn btn-black18 fs-lg-5 text-primary py-lg-3 px-lg-7">預約管理</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="container reserve-content pb-9 pb-lg-13">
+        <!-- <li class="row justify-content-between justify-content-lg-center align-items-center py-7 border border-grey1D active">
+          <div class="col-3 col-lg-2">
+            <img src="../assets/images/reserve/female-1.svg" class="object-fit-cover rounded-circle d-block mx-auto" alt="personal pic">
+          </div>
+          <div class="col-5 col-sm-6 col-lg-8">
+            <div class="card-body position-relative">
+              <p class="card-title fs-5 fs-lg-3 fw-bold">Wang ming</p>
+              <p class="card-text multiline-ellipsis">
+                哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！
+              </p>
+              <span class="badge rounded-pill text-bg-greyE9 text-grey66 position-absolute fs-lg-8 top-10 start-100 start-sm-75 start-md-50 start-lg-30">預約完成</span>
+            </div>
+          </div>
+          <div class="col-4 col-sm-3 col-lg-2">
+            <p class="card-text text-grey9F fs-8 text-end text-md-center">
+              2023/10/26
+            </p>
+          </div>
+        </li>
+        <li class="row justify-content-between justify-content-lg-center align-items-center py-7 border border-grey1D">
+          <div class="col-3 col-lg-2">
+            <img src="../assets/images/reserve/female-1.svg" class="object-fit-cover rounded-circle d-block mx-auto" alt="personal pic">
+          </div>
+          <div class="col-5 col-sm-6 col-lg-8">
+            <div class="card-body position-relative">
+              <p class="card-title fs-5 fs-lg-3 fw-bold">Wang ming</p>
+              <p class="card-text multiline-ellipsis">
+                哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！
+              </p>
+              <span class="badge rounded-pill text-bg-greyE9 text-grey66 position-absolute fs-lg-8 top-10 start-100 start-sm-75 start-md-50 start-lg-30">預約失敗</span>
+            </div>
+          </div>
+          <div class="col-4 col-sm-3 col-lg-2">
+            <p class="card-text text-grey9F fs-8 text-end text-md-center">
+              2023/10/26
+            </p>
+          </div>
+        </li>
+        <li class="row justify-content-between justify-content-lg-center align-items-center py-7 border border-grey1D">
+          <div class="col-3 col-lg-2">
+            <img src="../assets/images/reserve/female-1.svg" class="object-fit-cover rounded-circle d-block mx-auto" alt="personal pic">
+          </div>
+          <div class="col-5 col-sm-6 col-lg-8">
+            <div class="card-body position-relative">
+              <p class="card-title fs-5 fs-lg-3 fw-bold">Wang ming</p>
+              <p class="card-text multiline-ellipsis">
+                哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！
+              </p>
+              <span class="badge rounded-pill text-bg-greyE9 text-grey66 position-absolute fs-lg-8 top-10 start-100 start-sm-75 start-md-50 start-lg-30">預約中</span>
+            </div>
+          </div>
+          <div class="col-4 col-sm-3 col-lg-2">
+            <p class="card-text text-grey9F fs-8 text-end text-md-center">
+              2023/10/26
+            </p>
+          </div>
+        </li>
+        <li class="row justify-content-between justify-content-lg-center align-items-center py-7 border border-grey1D">
+          <div class="col-3 col-lg-2">
+            <img src="../assets/images/reserve/female-1.svg" class="object-fit-cover rounded-circle d-block mx-auto" alt="personal pic">
+          </div>
+          <div class="col-5 col-sm-6 col-lg-8">
+            <div class="card-body position-relative">
+              <p class="card-title fs-5 fs-lg-3 fw-bold">Wang ming</p>
+              <p class="card-text multiline-ellipsis">
+                哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！
+              </p>
+              <span class="badge rounded-pill text-bg-greyE9 text-grey66 position-absolute fs-lg-8 top-10 start-100 start-sm-75 start-md-50 start-lg-30">預約中</span>
+            </div>
+          </div>
+          <div class="col-4 col-sm-3 col-lg-2">
+            <p class="card-text text-grey9F fs-8 text-end text-md-center">
+              2023/10/26
+            </p>
+          </div>
+        </li>
+        <li class="row justify-content-between justify-content-lg-center align-items-center py-7 border border-grey1D">
+          <div class="col-3 col-lg-2">
+            <img src="../assets/images/reserve/female-1.svg" class="object-fit-cover rounded-circle d-block mx-auto" alt="personal pic">
+          </div>
+          <div class="col-5 col-sm-6 col-lg-8">
+            <div class="card-body position-relative">
+              <p class="card-title fs-5 fs-lg-3 fw-bold">Wang ming</p>
+              <p class="card-text multiline-ellipsis">
+                哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！
+              </p>
+              <span class="badge rounded-pill text-bg-greyE9 text-grey66 position-absolute fs-lg-8 top-10 start-100 start-sm-75 start-md-50 start-lg-30">預約中</span>
+            </div>
+          </div>
+          <div class="col-4 col-sm-3 col-lg-2">
+            <p class="card-text text-grey9F fs-8 text-end text-md-center">
+              2023/10/26
+            </p>
+          </div>
+        </li>
+        <li class="row justify-content-between justify-content-lg-center align-items-center py-7 border border-grey1D">
+          <div class="col-3 col-lg-2">
+            <img src="../assets/images/reserve/female-1.svg" class="object-fit-cover rounded-circle d-block mx-auto" alt="personal pic">
+          </div>
+          <div class="col-5 col-sm-6 col-lg-8">
+            <div class="card-body position-relative">
+              <p class="card-title fs-5 fs-lg-3 fw-bold">Wang ming</p>
+              <p class="card-text multiline-ellipsis">
+                哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！
+              </p>
+              <span class="badge rounded-pill text-bg-greyE9 text-grey66 position-absolute fs-lg-8 top-10 start-100 start-sm-75 start-md-50 start-lg-30">預約中</span>
+            </div>
+          </div>
+          <div class="col-4 col-sm-3 col-lg-2">
+            <p class="card-text text-grey9F fs-8 text-end text-md-center">
+              2023/10/26
+            </p>
+          </div>
+        </li> -->
+      </ul>
+      <div class="container reserve-myDiscuss d-none opacity-0">
+        <p>
+          <span class="material-symbols-outlined fs-lg-1 fw-bold py-7 py-lg-9 px-3 px-7 backToReserve">
+            arrow_back_ios
+          </span>
+        </p>
+        <div class="row justify-content-around align-items-center border-bottom border-grey9F py-7 py-lg-9">
+          <div class="col-3 col-lg-2">
+            <img class="rounded-circle object-fit-cover image" src="../assets/images/reserve/female-1.svg" alt="personal pic">
+          </div>
+          <div class="col-5 col-lg-6">
+            <p class="fs-4 fs-lg-2 fw-bold name">Wang ming</p>
+          </div>
+          <div class="col-4 col-lg-2">
+            <p class="fw-bold text-grey9F fs-8 fs-lg-7 text-end text-lg-start date">
+              2023/10/26
+            </p>
+          </div>
+        </div>
+        <div class="row py-7 py-lg-9">
+          <div class="col-12">
+            <p class="fs-lg-4 fw-bold">預約時間：<span class="reservationTime">112年10月5號 15:00</span></p>
+          </div>
+          <div class="col-12">
+            <p class="fs-lg-4 fw-bold">地點：<a target="_blank" href="#" class="location">忠孝復興站1號出口</a></p>
+          </div>
+          <div class="col-8 col-lg-9">
+            <p class="fs-lg-4 fw-bold">狀態：<span class="state">預約中</span></p>
+          </div>
+          <div class="col-4 col-lg-3 reserve-myDiscuss-Radio-Form">
+            <div class="form-check">
+              <input class="form-check-input fs-lg-4" type="radio" name="reserve-myDiscuss" id="reserve-myDiscussCancel">
+              <label class="form-check-label fw-bold fs-lg-4" for="reserve-myDiscussCancel">
+                取消預約
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row flex-column">
+          <div class="col-8 d-flex align-self-end">
+            <p class="bg-black text-primary fs-lg-4 p-3 p-lg-7 rounded-4 ms-auto text-end mb-7 mb-lg-9 commentBody">
+              好啊，那我們就當天見！
+            </p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-6">
+            <div class="c-confirm-btn-group reserveMyDiscussConfirmGroup btn-group w-100 mb-7 mb-lg-9" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-black18 text-primary active py-lg-3 px-lg-7 reserveMyDiscussConfirmSubmit" disabled>送出</button>
+              <button type="button" class="btn btn-black18 text-primary py-lg-3 px-lg-7 reserveMyDiscussConfirmCancel">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container reserve-manageAppointments d-none opacity-0">
+        <p>
+          <span class="material-symbols-outlined fs-lg-1 fw-bold py-7 py-lg-9 px-3 px-7 backToReserve">
+            arrow_back_ios
+          </span>
+        </p>
+        <div class="row justify-content-around align-items-center border-bottom border-grey9F py-7 py-lg-9">
+          <div class="col-3 col-lg-2">
+            <img class="rounded-circle object-fit-cover image" src="../assets/images/reserve/female-1.svg" alt="personal pic">
+          </div>
+          <div class="col-5 col-lg-6">
+            <p class="fs-4 fs-lg-2 fw-bold name">Wang ming</p>
+          </div>
+          <div class="col-4 col-lg-2">
+            <p class="fw-bold text-grey9F fs-8 fs-lg-7 text-end text-lg-start date">
+              2023/10/26
+            </p>
+          </div>
+        </div>
+        <div class="row py-7 py-lg-9">
+          <div class="col-12">
+            <p class="fs-lg-4 fw-bold">預約時間：<span class="reservationTime">112年10月5號 15:00</span></p>
+          </div>
+          <div class="col-12">
+            <p class="fs-lg-4 fw-bold">手機號碼：<a target="_blank" href="tel" class="tel">0912123456</a></p>
+          </div>
+          <div class="col-12">
+            <p class="fs-lg-4 fw-bold">地點：<a target="_blank" href="https://www.google.com.tw/maps?q=" class="location">忠孝復興站1號出口</a></p>
+          </div>
+          <div class="col-5 col-lg-6">
+            <p class="fs-lg-4 fw-bold">狀態：<span class="state">預約中</span></p>
+          </div>
+          <div class="col-7 col-lg-6 d-flex justify-content-around  reserve-manageAppointments-Radio-Form">
+            <div class="form-check">
+              <input class="form-check-input fs-lg-4" type="radio" name="reserve-manageAppointments" id="reserve-manageAppointmentsApprove">
+              <label class="form-check-label fw-bold fs-lg-4" for="reserve-manageAppointmentsApprove">
+                確認預約
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input fs-lg-4" type="radio" name="reserve-manageAppointments" id="reserve-manageAppointmentsCancel">
+              <label class="form-check-label fw-bold fs-lg-4" for="reserve-manageAppointmentsCancel">
+                拒絕預約
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row flex-column">
+          <div class="col-8 d-flex">
+            <p class="bg-black text-primary fs-lg-4 p-3 p-lg-7 rounded-4 mb-7 mb-lg-9 commentBody">
+              哈摟，我很喜歡你的穿搭，希望能有機會跟您約時間碰面，想請您幫忙研究如何穿搭比較好，如有興趣，再麻煩撥空回覆，萬分感謝！
+            </p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-6">
+            <div class="c-confirm-btn-group reserveManageAppointmentsConfirmGroup btn-group w-100 mb-7 mb-lg-9" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-black18 text-primary active py-lg-3 px-lg-7 reserveManageAppointmentsConfirmSubmit" disabled>送出</button>
+              <button type="button" class="btn btn-black18 text-primary py-lg-3 px-lg-7 reserveManageAppointmentsConfirmCancel">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container paginationArea">
+        <nav aria-label="Page navigation">
+          <ul class="pagination m-0 justify-content-center">
+            <li class="page-item prev">
+              <a class="page-link page-prev border-black18 bg-black" href="#" aria-label="Previous">
+                <img src="../assets/images/components/Btn-Arrow-primary.svg" alt="pagination arrow">
+                <img src="../assets/images/components/Btn-Arrow-black.svg" alt="pagination arrow">
+              </a>
+            </li>
+            <!-- <li class="page-item"><a class="page-link page-num py-lg-3 px-lg-7 border-black18 bg-black fs-6 fs-lg-5 active" href="#">1</a></li> -->
+            <li class="page-item next">
+              <a class="page-link page-next border-black18 bg-black" href="#" aria-label="Next">
+                <img src="../assets/images/components/Btn-Arrow-primary.svg" alt="pagination arrow">
+                <img src="../assets/images/components/Btn-Arrow-black.svg" alt="pagination arrow">
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+
+
+    
+
+    <%- include('./layout/footer'); -%>
+    <!-- own JS -->
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../assets/js/componentPagination.js"></script>
+    <script type="module" src="../assets/js/reserve.js"></script>
+  </body>
+</html>
