@@ -1,7 +1,7 @@
 # JS 直播班 ![Alt text](assets/images/logo_white.svg)  
 
 * [GitHub](https://github.com/bftsai/outfitpals/tree/master)  
-* [gh-pages](https://bftsai.github.io/outfitpals/)  
+* [gh-pages](https://jhuang-yu-jhen.github.io/outfitpals/)  
 
 ## 🕺💃&ensp;作者
   - [Oria Lin](https://github.com/OriaLin) - index、header、footer、建立貼文  

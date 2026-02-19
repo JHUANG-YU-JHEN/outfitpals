@@ -8,11 +8,11 @@ import { localUrl, apiUrl } from './config.js';
 // const row = document.querySelector(".rows")
 
 // https://outfitpals-web-server.onrender.com/
-// https://bftsai.github.io/outfitpals
+// https://jhuang-yu-jhen.github.io/outfitpals
 import axios from "axios";
 import { data } from "jquery";
 // const apiUrl='https://outfitpals-web-server.onrender.com/';
-// const localUrl='https://bftsai.github.io/outfitpals';
+// const localUrl='https://jhuang-yu-jhen.github.io/outfitpals';
 // const apiUrl='http://localhost:3000/';
 // const localUrl='http://localhost:5173/outfitpals/pages';
 // // 當 search 元素被點擊時，防止事件冒泡

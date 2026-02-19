@@ -5,7 +5,7 @@ import axios from "axios"
 //const apiUrl='https://outfitpals-web-server.onrender.com/'; //render server
 // const apiUrl='http://localhost:3000/';
 // const apiUrl='https://outfitpals-web-server.onrender.com/';
-// const localUrl='https://bftsai.github.io/outfitpals';
+// const localUrl='https://jhuang-yu-jhen.github.io/outfitpals';
 // const apiUrl='http://localhost:3000/';
 // const localUrl='http://localhost:5173/outfitpals/pages';
 

@@ -10,7 +10,7 @@ import { localUrl, apiUrl } from './config.js';
 // const apiUrl='http://localhost:3000/';
 // const localUrl='http://localhost:5173/outfitpals/pages';
 // const apiUrl='https://outfitpals-web-server.onrender.com/';
-// const localUrl='https://bftsai.github.io/outfitpals';
+// const localUrl='https://jhuang-yu-jhen.github.io/outfitpals';
 
 //兩頁換頁
 const thumbLinks = document.querySelectorAll(".thumb-link");

@@ -3,9 +3,9 @@ import { localUrl, apiUrl } from './config.js';
 import axios from 'axios';
 
 // https://outfitpals-web-server.onrender.com/
-// // https://bftsai.github.io/outfitpals
+// // https://jhuang-yu-jhen.github.io/outfitpals
 // const apiUrl='https://outfitpals-web-server.onrender.com/';
-// const localUrl='https://bftsai.github.io/outfitpals';
+// const localUrl='https://jhuang-yu-jhen.github.io/outfitpals';
 // const apiUrl='http://localhost:3000/';
 // const localUrl='http://localhost:5173/outfitpals/pages';
 
