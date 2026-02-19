@@ -7,6 +7,11 @@ import copy from 'rollup-plugin-copy';
 
 import liveReload from 'vite-plugin-live-reload';
 
+const isDev = process.env.NODE_ENV === 'development';
+const envBase = process.env.VITE_BASE_PATH;
+const defaultBase = '/outfitpals/';
+const basePath = isDev ? '/' : envBase ?? defaultBase;
+
 function moveOutputPlugin() {
   return {
     name: 'move-output',
@@ -26,10 +31,22 @@ function moveOutputPlugin() {
 export default defineConfig({
   // base 的寫法：
   // base: '/Repository 的名稱/'
-  base: process.env.VITE_BASE_PATH || '/',
+  base: basePath,
   plugins: [
     liveReload(['./layout/**/*.ejs', './pages/**/*.ejs', './pages/**/*.html']),
-    ViteEjsPlugin(),
+    ViteEjsPlugin((config) => ({
+      BASE_URL: config.base ?? basePath,
+    })),
+    copy({
+      targets: [
+        {
+          src: 'assets/images/**/*',
+          dest: 'dist/assets/images',
+        },
+      ],
+      hook: 'writeBundle',
+      verbose: false,
+    }),
     moveOutputPlugin(),
   ],
   server: {
