@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { localUrl, apiUrl } from './config.js';
 
 /* ----------------------------- Helpers ----------------------------- */
@@ -83,7 +84,6 @@ const m2 = qs('.m2');
 // Containers
 const personalEl = qs('.personal');
 const otherspostEl = qs('.otherspost');
-const collectpostEl = qs('.collectpost'); // (not used in original; kept)
 
 /* ----------------------------- Calendar State ----------------------------- */
 
@@ -104,7 +104,7 @@ function daysInMonth(year, monthIndex) {
   return monthDays[monthIndex];
 }
 function firstWeekday(year, monthIndex) {
-  // 0=Sunday..6=Saturday, but your original treats Sunday as 7
+  // Convert Sunday(0) to 7 to match your table starting from Mon
   let d = new Date(year, monthIndex, 1).getDay();
   return d === 0 ? 7 : d;
 }
@@ -114,8 +114,7 @@ function firstWeekday(year, monthIndex) {
 let personalData = null; // /personal record
 let selectableDates = new Set(); // okday as "M/D"
 let blockedDates = new Set(); // otherdate as "M/D"
-let selectedDates = new Set(); // user clicks, to patch back
-let originalCellContent = new Array(tdList.length).fill('　'); // cached
+let selectedDates = new Set(); // user clicks (to save)
 
 /* ----------------------------- Render: Profile ----------------------------- */
 
@@ -197,7 +196,7 @@ const MAX_PAGES = 100;
 function renderPostWall(containerEl, postdata, page) {
   if (!containerEl) return;
 
-  // Skeleton once
+ // Skeleton once
   containerEl.innerHTML = `
     <div class="row justify-content-center post1"></div>
     <div class="row justify-content-center mt-5 post2"></div>
@@ -205,9 +204,9 @@ function renderPostWall(containerEl, postdata, page) {
     <div class="pe-5 me-5 mt-5">
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-lg-center my-3">
-          <li class="page-item"><a href="#" class="page-link border-0 l" data-action="prev"><i class="bi bi-chevron-left"></i></a></li>
+          <li class="page-item"><a href="#" class="page-link border-0" data-action="prev"><i class="bi bi-chevron-left"></i></a></li>
           <div class="page d-flex"></div>
-          <li class="page-item"><a href="#" class="page-link border-0 r" data-action="next"><i class="bi bi-chevron-right"></i></a></li>
+          <li class="page-item"><a href="#" class="page-link border-0" data-action="next"><i class="bi bi-chevron-right"></i></a></li>
         </ul>
       </nav>
     </div>
@@ -235,18 +234,19 @@ function renderPostWall(containerEl, postdata, page) {
   if (row1) row1.innerHTML = chunks[0].map(buildCard).join('');
   if (row2) row2.innerHTML = chunks[1].map(buildCard).join('');
   if (row3) row3.innerHTML = chunks[2].map(buildCard).join('');
-
+  
   // Pagination render
   if (pageEl) {
     pageEl.innerHTML = '';
     for (let i = 1; i <= totalPages; i++) {
-      pageEl.innerHTML += `<li class="page-item ${i === safePage ? 'active' : ''}">
-        <a href="#" class="page-link border-0" data-action="goto" data-page="${i}">${i}</a>
-      </li>`;
+      pageEl.innerHTML += `
+        <li class="page-item ${i === safePage ? 'active' : ''}">
+          <a href="#" class="page-link border-0" data-action="goto" data-page="${i}">${i}</a>
+        </li>`;
     }
   }
 
-  // Event delegation: bind once per container
+  // Delegate once (overwrite OK because we re-render whole wall anyway)
   containerEl.onclick = (e) => {
     const target = e.target;
     if (!(target instanceof Element)) return;
@@ -260,16 +260,12 @@ function renderPostWall(containerEl, postdata, page) {
       const total = Math.min(MAX_PAGES, Math.ceil(postdata.length / POSTS_PER_PAGE));
       let current = getPageFromUrl();
 
-      if (action === 'prev') {
-        current = Math.max(1, current - 1);
-      } else if (action === 'next') {
-        current = Math.min(total || 1, current + 1);
-      } else if (action === 'goto') {
+      if (action === 'prev') current = Math.max(1, current - 1);
+      else if (action === 'next') current = Math.min(total || 1, current + 1);
+      else if (action === 'goto') {
         current = parseInt(actionEl.getAttribute('data-page') || '1', 10);
         current = Math.min(total || 1, Math.max(1, current));
-      } else {
-        return;
-      }
+      } else return;
 
       setPageToUrl(current);
       renderPostWall(containerEl, postdata, current);
@@ -321,8 +317,7 @@ function showCollectView(user) {
     </div>
   `;
 
-  const goback = qs('#goback', collect);
-  goback?.addEventListener(
+  qs('#goback', collect)?.addEventListener(
     'click',
     () => {
       collect.classList.add('d-none');
@@ -334,13 +329,18 @@ function showCollectView(user) {
   );
 
   const cardRow = qs('#cardRow', collect);
+  if (!cardRow) return;
 
+  cardRow.innerHTML = `<div class="text-center my-5">載入收藏中...</div>`;
   // Favorites fetch once
   axios
     .get(`${API}favorites?_expand=post&userId=${encodeURIComponent(userId)}`)
     .then((res) => {
       const items = Array.isArray(res.data) ? res.data : [];
-      if (!cardRow) return;
+      if (items.length === 0) {
+        cardRow.innerHTML = `<div class="text-center my-5">目前沒有收藏</div>`;
+        return;
+      }
 
       cardRow.innerHTML = items
         .map((it) => {
@@ -348,9 +348,7 @@ function showCollectView(user) {
           if (!p) return '';
           return `
             <div class="col-lg-4 col-md-6">
-              <div class="card card1" style="width: 350px; height: 450px;" data-post-id="${escapeHtml(
-                p.id
-              )}">
+              <div class="card card1" style="width: 350px; height: 450px;" data-post-id="${escapeHtml(p.id)}">
                 <img src="${escapeHtml(p.imgUrl)}" style="width: 350px; height: 400px;" class="object-fit-cover bg-cover" loading="lazy" alt="favorite">
                 <div class="card-body dontmove"></div>
               </div>
@@ -370,17 +368,21 @@ function showCollectView(user) {
     })
     .catch((err) => {
       console.error('favorites fetch failed:', err);
-      if (cardRow) cardRow.innerHTML = `<div class="alert alert-danger">收藏載入失敗，請稍後再試</div>`;
+      cardRow.innerHTML = `<div class="alert alert-danger">收藏載入失敗，請稍後再試</div>`;
     });
 }
 
 /* ----------------------------- Calendar Rendering ----------------------------- */
 
+let calendarBound = false;
+let navBound = false;
+
 function clearCalendarCells() {
-  // Avoid repeated DOM writes: only set when needed
   for (let i = 0; i < tdList.length; i++) {
-    tdList[i].classList.remove('go');
-    tdList[i].innerHTML = '　';
+    const td = tdList[i];
+    td.classList.remove('go');
+    td.removeAttribute('data-day');
+    td.innerHTML = '　';
   }
   const current = document.getElementById('current-day');
   if (current) current.removeAttribute('id');
@@ -397,71 +399,62 @@ function renderCalendar() {
   const firstDay = firstWeekday(year, month); // 1..7
   const dim = daysInMonth(year, month);
 
-  // Fill day numbers / icons
+    // Fill day numbers / icons
   for (let day = 1; day <= dim; day++) {
-    const index = firstDay + day - 2; // align with your original logic
+    const index = firstDay + day - 2; // align with your original
     if (index < 0 || index >= tdList.length) continue;
 
     const key = `${month + 1}/${day}`;
+    const td = tdList[index];
 
-    // base number
-    tdList[index].innerHTML = String(day);
+    td.setAttribute('data-day', String(day));
 
-    // overlay icons based on server state
+    // baseline number
+    let html = String(day);
+
+    // server state icons
     if (selectableDates.has(key)) {
-      tdList[index].innerHTML =
-        '<i class="bi bi-calendar2-check-fill d-flex justify-content-center text-info"></i>';
+      html = '<i class="bi bi-calendar2-check-fill d-flex justify-content-center text-info"></i>';
     }
     if (blockedDates.has(key)) {
-      tdList[index].innerHTML =
-        '<i class="bi bi-calendar-x-fill d-flex justify-content-center text-danger"></i>';
+      html = '<i class="bi bi-calendar-x-fill d-flex justify-content-center text-danger"></i>';
     }
 
-    // Selected (user click) overrides to check icon
+    // user selected (overrides)
     if (selectedDates.has(key)) {
-      tdList[index].classList.add('go');
-      tdList[index].innerHTML =
-        '<i class="bi bi-calendar2-check-fill text-info d-flex justify-content-center"></i>';
+      td.classList.add('go');
+      html = '<i class="bi bi-calendar2-check-fill text-info d-flex justify-content-center"></i>';
     }
 
-    // cache original cell content for toggle
-    originalCellContent[index] = tdList[index].innerHTML;
+    td.innerHTML = html;
 
-    // mark today only if viewing current month/year
+    // mark today
     if (year === currentYear && month === currentMonthIndex && day === currentDay) {
-      tdList[index].setAttribute('id', 'current-day');
+      td.setAttribute('id', 'current-day');
     }
   }
 
   monthsEl.innerHTML = `<strong class="fs-2" id="months">${year}-${month + 1}月</strong>`;
 }
 
-function toggleDateSelection(cellIndex) {
-  const cell = tdList[cellIndex];
+function toggleDateSelectionByCell(cell) {
   if (!cell) return;
 
-  // Determine day number:
-  // - If cell contains number text, use it.
-  // - If it contains icon, it might have no number; ignore clicks on non-date cells.
-  const text = cell.textContent?.trim();
-  const day = parseInt(text || '', 10);
+  const dayStr = cell.getAttribute('data-day');
+  const day = parseInt(dayStr || '', 10);
   if (!Number.isFinite(day) || day <= 0) return;
 
   const key = `${viewMonthIndex + 1}/${day}`;
 
-  // If blocked date, do not allow toggling (optional; matches typical UX)
+  // blocked not selectable
   if (blockedDates.has(key)) return;
 
   if (selectedDates.has(key)) {
     selectedDates.delete(key);
-    cell.classList.remove('go');
-    // revert to server state icon/number
-    cell.innerHTML = originalCellContent[cellIndex];
   } else {
     selectedDates.add(key);
-    cell.classList.add('go');
-    cell.innerHTML = '<i class="bi bi-calendar2-check-fill text-info d-flex justify-content-center"></i>';
   }
+  renderCalendar();
 }
 
 /* ----------------------------- Reservation / Tabs ----------------------------- */
@@ -488,15 +481,12 @@ function showReserveView(isOpen) {
 }
 
 function bindTabsOnce(isOpenProvider) {
-  // Bind once only; no per-state duplicate listeners
   thumbLinks.forEach((link) => {
-    if (link.__bound) return;
-    link.__bound = true;
+    if (link.dataset.bound === '1') return;
+    link.dataset.bound = '1';
 
     link.addEventListener('click', (event) => {
       event.preventDefault();
-
-      // active class toggle
       thumbLinks.forEach((l) => l.querySelector('.thumb')?.classList.remove('active'));
       link.querySelector('.thumb')?.classList.add('active');
 
@@ -514,13 +504,12 @@ function bindTabsOnce(isOpenProvider) {
 
 async function init() {
   if (!storedToken || !userId) {
-    // not logged in: you can redirect or show a message
     console.warn('Not logged in');
     return;
   }
 
   try {
-    // Fetch user + posts + personal in parallel (faster)
+    // parallel fetch
     const [userRes, postsRes, personalRes] = await Promise.all([
       axios.get(`${API}640/users?id=${encodeURIComponent(userId)}`, {
         headers: { authorization: `Bearer ${storedToken}` },
@@ -537,10 +526,7 @@ async function init() {
 
     if (user) {
       renderProfile(user);
-
-      // Bind "我的收藏" button once (event delegation could also be used)
-      const reserveBtn = qs('#reservebtn');
-      reserveBtn?.addEventListener(
+      qs('#reservebtn')?.addEventListener(
         'click',
         () => {
           showCollectView(user);
@@ -549,7 +535,7 @@ async function init() {
       );
     }
 
-    // Posts section
+    // posts
     const page = getPageFromUrl();
     if (myPosts.length > 0) {
       nopost?.classList.add('d-none');
@@ -560,44 +546,45 @@ async function init() {
       noopen?.classList.add('d-none');
     }
 
-    // Personal reservation section
+    // personal
     personalData = personalArr[0] || null;
-    const isOpen = Boolean(personalData?.isopen);
 
-    // Bind tabs once with live isOpen state
+    // tabs bind once
     bindTabsOnce(() => Boolean(personalData?.isopen));
 
     if (!personalData) {
-      // If no personal record exists, treat as closed
-      showReserveView(false);
+      // no personal record => closed
+      showPostsView();
       return;
     }
 
-    // Fill placeholders (no repeated stringifying)
+    // placeholders
     const [startHour, startMinute, endHour, endMinute] = String(personalData.oktime || '00:00~00:00').split(/[~:]/);
-    p1.placeholder = String(personalData.pos1 ?? '').replaceAll('"', '');
-    p2.placeholder = String(personalData.pos2 ?? '').replaceAll('"', '');
-    p3.placeholder = String(personalData.pos3 ?? '').replaceAll('"', '');
-    p4.placeholder = String(personalData.pos4 ?? '').replaceAll('"', '');
-    t1.placeholder = startHour ?? '';
-    m1.placeholder = startMinute ?? '';
-    t2.placeholder = endHour ?? '';
-    m2.placeholder = endMinute ?? '';
 
-    // Build sets for O(1) lookup
+    if (p1) p1.placeholder = String(personalData.pos1 ?? '');
+    if (p2) p2.placeholder = String(personalData.pos2 ?? '');
+    if (p3) p3.placeholder = String(personalData.pos3 ?? '');
+    if (p4) p4.placeholder = String(personalData.pos4 ?? '');
+
+    if (t1) t1.placeholder = startHour ?? '';
+    if (m1) m1.placeholder = startMinute ?? '';
+    if (t2) t2.placeholder = endHour ?? '';
+    if (m2) m2.placeholder = endMinute ?? '';
+
     selectableDates = new Set((personalData.okday || []).map(String));
     blockedDates = new Set((personalData.otherdate || []).map(String));
-    selectedDates = new Set(); // fresh selection per session
+    selectedDates = new Set();
 
-    // Initial calendar render
+    // initial render calendar
     viewYear = today.getFullYear();
     viewMonthIndex = today.getMonth();
     renderCalendar();
 
-    // Calendar navigation: bind once
-    if (leftBtn && !leftBtn.__bound) {
-      leftBtn.__bound = true;
-      leftBtn.addEventListener('click', () => {
+    // calendar navigation bind once
+    if (!navBound) {
+      navBound = true;
+
+      leftBtn?.addEventListener('click', () => {
         if (viewMonthIndex > 0) viewMonthIndex -= 1;
         else {
           viewMonthIndex = 11;
@@ -605,11 +592,8 @@ async function init() {
         }
         renderCalendar();
       });
-    }
 
-    if (rightBtn && !rightBtn.__bound) {
-      rightBtn.__bound = true;
-      rightBtn.addEventListener('click', () => {
+      rightBtn?.addEventListener('click', () => {
         if (viewMonthIndex < 11) viewMonthIndex += 1;
         else {
           viewMonthIndex = 0;
@@ -619,35 +603,42 @@ async function init() {
       });
     }
 
-    // Calendar cell click: single delegated handler
-    if (!tdList.__bound) {
-      tdList.__bound = true;
-      tdList.forEach((cell, idx) => {
-        cell.addEventListener('click', () => toggleDateSelection(idx));
+    // calendar click bind once (delegation)
+    if (!calendarBound) {
+      calendarBound = true;
+
+      // Delegate on table body (or document) to avoid 35 listeners
+      const table = qs('table');
+      table?.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!(target instanceof Element)) return;
+
+        const td = target.closest('td');
+        if (!td) return;
+        toggleDateSelectionByCell(td);
       });
     }
 
-    // Setting patch: bind once
-    if (settingBtn && !settingBtn.__bound) {
-      settingBtn.__bound = true;
+    // save patch bind once
+    if (settingBtn && settingBtn.dataset.bound !== '1') {
+      settingBtn.dataset.bound = '1';
+
       settingBtn.addEventListener('click', async () => {
-        const dataid = personalData.id;
+        const dataid = personalData?.id;
         if (!dataid) return;
 
-        const t1Value = t1.value || t1.placeholder;
-        const m1Value = m1.value || m1.placeholder;
-        const t2Value = t2.value || t2.placeholder;
-        const m2Value = m2.value || m2.placeholder;
+        const t1Value = (t1?.value || t1?.placeholder || '').trim();
+        const m1Value = (m1?.value || m1?.placeholder || '').trim();
+        const t2Value = (t2?.value || t2?.placeholder || '').trim();
+        const m2Value = (m2?.value || m2?.placeholder || '').trim();
 
-        const pos1 = p1.value || p1.placeholder;
-        const pos2 = p2.value || p2.placeholder;
-        const pos3 = p3.value || p3.placeholder;
-        const pos4 = p4.value || p4.placeholder;
+        const pos1 = (p1?.value || p1?.placeholder || '').trim();
+        const pos2 = (p2?.value || p2?.placeholder || '').trim();
+        const pos3 = (p3?.value || p3?.placeholder || '').trim();
+        const pos4 = (p4?.value || p4?.placeholder || '').trim();
 
-        const oktim = `${t1Value}:${m1Value}~${t2Value}:${m2Value}`;
+        const oktime = `${t1Value}:${m1Value}~${t2Value}:${m2Value}`;
 
-        // Merge: keep existing okday plus newly selected, or overwrite entirely?
-        // Original code overwrote with `dates` only. We'll overwrite with selectedDates only (same behavior).
         const okday = Array.from(selectedDates);
 
         try {
@@ -657,15 +648,15 @@ async function init() {
             pos3,
             pos4,
             okday,
-            oktime: oktim,
+            oktime,
           });
 
-          // Update local cache & sets to reflect saved state
+          // update cache
           personalData.pos1 = pos1;
           personalData.pos2 = pos2;
           personalData.pos3 = pos3;
           personalData.pos4 = pos4;
-          personalData.oktime = oktim;
+          personalData.oktime = oktime;
           personalData.okday = okday;
 
           selectableDates = new Set(okday);
@@ -678,16 +669,17 @@ async function init() {
       });
     }
 
-    // Close reservation: bind once
-    if (closeBtn && !closeBtn.__bound) {
-      closeBtn.__bound = true;
+    // close reservation bind once
+    if (closeBtn && closeBtn.dataset.bound !== '1') {
+      closeBtn.dataset.bound = '1';
       closeBtn.addEventListener('click', async () => {
-        const dataid = personalData.id;
+        const dataid = personalData?.id;
         if (!dataid) return;
 
         try {
           await axios.patch(`${API}personal/${dataid}`, { isopen: false });
           personalData.isopen = false;
+          // 只在切到預約資訊 tab 時顯示 noopen；這裡不 reload
           showReserveView(false);
         } catch (err) {
           console.error('close reservation failed:', err);
@@ -696,11 +688,11 @@ async function init() {
       });
     }
 
-    // Open reservation: bind once
-    if (openBtn && !openBtn.__bound) {
-      openBtn.__bound = true;
+    // open reservation bind once
+    if (openBtn && openBtn.dataset.bound !== '1') {
+      openBtn.dataset.bound = '1';
       openBtn.addEventListener('click', async () => {
-        const dataid = personalData.id;
+        const dataid = personalData?.id;
         if (!dataid) return;
 
         try {
@@ -715,13 +707,8 @@ async function init() {
       });
     }
 
-    // Initial view based on isopen
+    // initial view (same as your original: default show posts)
     showPostsView();
-    // Reserve view toggled when user clicks tab; keep initial as posts like your original
-    if (!isOpen) {
-      // noopen is shown only when user clicks reserve tab; keep hidden now
-      noopen?.classList.add('d-none');
-    }
   } catch (err) {
     console.error('Init failed:', err);
   }
