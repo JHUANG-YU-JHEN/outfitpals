@@ -12,7 +12,7 @@
 ## 🖥&ensp;下載專案
 > clone 專案  
 ```
-git clone https://github.com/bftsai/outfitpals.git  
+git clone https://github.com/jhuang-yu-jhen/outfitpals.git  
 ```
 
 > 移至專案資料夾  
