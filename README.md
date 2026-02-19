@@ -11,12 +11,12 @@ OutfitPals 為響應式多頁網站範例，整合穿搭推薦、捐款方案、
   - [Jennifer Jhuang](https://github.com/JHUANG-YU-JHEN) - 贊助我們 
 
 ## 主要特色
-- 分頁式設計：包含首頁、關於、會員、穿搭建立、捐款、預約等多種內容頁面，展示各區塊互動與資料呈現。
+- 分頁設計：包含首頁、關於、會員、穿搭建立、捐款、預約等多種內容頁面，展示各區塊互動與資料呈現。
 - 組件化 SASS：`assets/scss` 裡的 `base`、`components`、`layout`、`pages`、`utils` 模組讓樣式可維護、功能可複用。
 - 前後端模擬：`npm run dev` 時同步啟動 Vite 與 `json-server-auth db.json`，透過 `axios` 呼叫暫存資料，模擬會員登入、捐款與預約流程。
 - 本地 API 測試：使用 `db.json` 當資料庫，搭配 `json-server` 支援 REST，開發者可自由修改樣本資料。
 - 多頁面佈局：`pages/` 中的 `.html` 與 `layout/` 的 `footer.ejs`、`header.ejs` 共享區塊，加速頁面開發。
-- 部署友好：`npm run deploy` 可將靜態檔上傳至 GitHub Pages。
+- 部署：`npm run deploy` 可將靜態檔上傳至 GitHub Pages。
 
 ## 開發環境與啟動流程
 1. 取得 repo： `git clone https://github.com/jhuang-yu-jhen/outfitpals.git`
