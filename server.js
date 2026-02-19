@@ -9,12 +9,8 @@ const auth = require('json-server-auth');
 
 server.use(cors());
 server.use(middlewares);
+server.use(jsonServer.bodyParser);
 server.db = router.db;
 server.use(auth);
 server.use(router)
-server.listen(3000, () => {
-  console.log('JSON Server is running')
-});
-
-// Export the Server API
 module.exports = server

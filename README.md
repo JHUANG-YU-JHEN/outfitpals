@@ -30,6 +30,11 @@ npm install
 npm run dev  
 ```
 
+> 重新部署  
+```
+$env:VITE_BASE_PATH="/outfitpals/"
+```
+
 ## 📂&ensp;資料夾結構
 |-- assets  
 |&emsp;&emsp;&emsp;|-- images  
