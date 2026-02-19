@@ -4,6 +4,7 @@
 
 OutfitPals 為響應式多頁網站範例，整合穿搭推薦、捐款方案、會員資料與預約頁面，搭配 Bootstrap 5 和自訂 SASS 模組，並以 Vite 作為建構工具與 JSON Server 模擬後端資料，實現整體前端與串接流程。
 
+
 ## 團隊分工
   - [Oria Lin](https://github.com/OriaLin) - index、header、footer、建立貼文  
   - [Eric](https://github.com/ERIC955) - 貼文牆  
@@ -18,6 +19,21 @@ OutfitPals 為響應式多頁網站範例，整合穿搭推薦、捐款方案、
 - 多頁面佈局：`pages/` 中的 `.html` 與 `layout/` 的 `footer.ejs`、`header.ejs` 共享區塊，加速頁面開發。
 - 部署：`npm run deploy` 可將靜態檔上傳至 GitHub Pages。
 
+## 運用技術與工具
+- Vite：快速建置與熱重載
+- SASS + Bootstrap 5：模組化樣式與響應式元件
+- Axios：跨頁請求 `db.json`
+- JSON Server + json-server-auth：模擬 REST API + 權限
+- Express / server.js：提供自訂伺服器與 middleware
+- gh-pages：靜態部署
+
+## 設計資源
+- Figma 原型：可參考 [Figma 設計稿](https://www.figma.com/file/eTzdW6lOBUheLSbKyFXZol/?mode=design&t=H0iPBFia5wcdIVfY-0) 了解頁面區塊與互動
+
+## 使用素材
+- Google Font Icons：免費圖示資源（https://fonts.google.com/icons）
+- 專案內使用多款 badges 展示技術標籤：Vite、Bootstrap、Node.js 等
+  
 ## 開發環境與啟動流程
 1. 取得 repo： `git clone https://github.com/jhuang-yu-jhen/outfitpals.git`
 2. 切換目錄： `cd outfitpals`
@@ -64,22 +80,6 @@ OutfitPals 為響應式多頁網站範例，整合穿搭推薦、捐款方案、
 - `style`：格式調整（如 ESLint 自動格式化）
 - `ci`：CI/CD 流程更新
 - `perf`：效能調整
-
-## 運用技術與工具
-- Vite：快速建置與熱重載
-- SASS + Bootstrap 5：模組化樣式與響應式元件
-- Axios：跨頁請求 `db.json`
-- JSON Server + json-server-auth：模擬 REST API + 權限
-- Express / server.js：提供自訂伺服器與 middleware
-- commitizen + git-cz：統一 commit 格式
-- gh-pages：靜態部署
-
-## 設計資源
-- Figma 原型：可參考 [Figma 設計稿](https://www.figma.com/file/eTzdW6lOBUheLSbKyFXZol/?mode=design&t=H0iPBFia5wcdIVfY-0) 了解頁面區塊與互動
-
-## 使用素材
-- Google Font Icons：免費圖示資源（https://fonts.google.com/icons）
-- 專案內使用多款 badges 展示技術標籤：Vite、Bootstrap、Node.js 等
 
 ## 🧑‍💻&ensp;前端
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-5C2D91?logo=Visual%20Studio%20Code&labelColor=000)
